@@ -1,4 +1,5 @@
-﻿using DSharpPlus;
+﻿using Antuan.Commands;
+using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using Microsoft.Extensions.Logging;
@@ -48,10 +49,12 @@ namespace Antuan
             {
                 StringPrefixes = new string[] { configJson.Prefix },
                 EnableDms = false,
+                DmHelp = true,
                 EnableMentionPrefix = true
             };
 
             Commands = Client.UseCommandsNext(commandsConfig);
+            Commands.RegisterCommands<TestCommands>();
 
             await Client.ConnectAsync();
 
